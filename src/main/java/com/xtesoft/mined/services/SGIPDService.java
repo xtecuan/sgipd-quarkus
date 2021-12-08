@@ -49,6 +49,7 @@ public class SGIPDService {
             LOG.info("Current: "+i);
             LOG.info(r);
         }
+
     }
 
     public void runCriterio5RestanteTest(){
