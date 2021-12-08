@@ -1,0 +1,38 @@
+####
+# This Dockerfile is used in order to build a container that runs the Quarkus application in native (no JVM) mode
+#
+# Before building the container image run:
+#
+# ./mvnw package -Pnative
+#
+# Then, build the image with:
+#
+# docker build -f src/main/docker/Dockerfile.native -t quarkus/sigobsol-documents-loader .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 8080:8080 quarkus/sigobsol-documents-loader
+#
+###
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4
+WORKDIR /work/
+RUN chown 1001 /work 
+RUN chmod g+rwX /work 
+RUN chown 1001:root /work
+COPY target/*-runner /work/application
+RUN chown 1001:root /work/application
+
+#TIMEZONE CONFIGURATION
+RUN cp /etc/localtime /etc/localtime.old
+RUN rm -rfv /etc/localtime
+RUN ln -s /usr/share/zoneinfo/America/El_Salvador /etc/localtime
+RUN date
+
+#RUN mkdir -p /opt/sigobsol && chown 1001 /opt/sigobsol && chmod "g+rwX" /opt/sigobsol && chown 1001:root /opt/sigobsol
+
+#VOLUME ["/opt/sigobsol"]
+
+EXPOSE 7777
+USER 1001
+
+CMD ["./application", "-Dquarkus.http.host=0.0.0.0"]
