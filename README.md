@@ -1,4 +1,4 @@
-# sigobsol-documents-loader Project
+# sgipd-quarkus Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -43,7 +43,7 @@ Or, if you don't have GraalVM installed, you can run the native executable build
 ./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/sigobsol-documents-loader-1.0.0-SNAPSHOT-runner`
+You can then execute your native executable with: `./target/sgipd-quarkus-1.0.0-SNAPSHOT-runner`
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
 
@@ -58,4 +58,4 @@ If you want to learn more about building native executables, please consult http
 Easily start your RESTful Web Services
 
 [Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
-# sigobsol-documents-loader
+# sgipd-quarkus
