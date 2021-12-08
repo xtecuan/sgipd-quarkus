@@ -41,7 +41,7 @@ public class SGIPDService {
         return sgipdClient.saveCriterio5ResidenciaDocente(BEARER+token.access_token,pageSize,from);
     }
     //
-    @Scheduled(cron = "5 20 22 7 DEC ? 2021")
+    @Scheduled(cron = "5 20 23 7 DEC ? 2021")
     void runCriterio5Restante(ScheduledExecution execution){
         LOG.info(execution.getScheduledFireTime());
         for (int i = BEGIN; i < END ; i=i+BY) {
