@@ -21,7 +21,7 @@ import java.util.List;
 public class SGIPDService {
     public static final int BEGIN = 126000;
     public static final int END = 320966;
-    public static final int BY= 5000;
+    public static final int BY= 10000;
     private static final Logger LOG = Logger.getLogger(SGIPDService.class);
     public static final String BEARER="Bearer ";
     @Inject
@@ -40,6 +40,12 @@ public class SGIPDService {
         KeycloakTokenPojo token = keycloakService.getToken();
         return sgipdClient.saveCriterio5ResidenciaDocente(BEARER+token.access_token,pageSize,from);
     }
+
+    public Long getCountAplicaciones(){
+        KeycloakTokenPojo token = keycloakService.getToken();
+        return sgipdClient.getCountAplicaciones(BEARER+token.access_token);
+    }
+
     //
     @Scheduled(cron = "5 20 23 7 DEC ? 2021")
     void runCriterio5Restante(ScheduledExecution execution){
@@ -51,12 +57,18 @@ public class SGIPDService {
         }
 
     }
-
-    public void runCriterio5RestanteTest(){
-
-        for (int i = BEGIN; i <= END ; i=i+BY) {
-            //Criterio5Result r = saveCriterio5ResidenciaDocente(BY,BEGIN);
-            LOG.info("Current: "+i);
+    @Scheduled(cron = "0 35 10 8 DEC ? 2021")
+    public void runCriterio5Full(ScheduledExecution execution){
+        Long count = this.getCountAplicaciones();
+        LOG.info("Execution time: "+execution.getScheduledFireTime());
+        for (int i = 0; i <= count.intValue(); i=i+BY) {
+            LOG.info("Processing: i="+i);
+            Criterio5Result r = saveCriterio5ResidenciaDocente(BY,i);
+            LOG.info("Result: "+r);
         }
     }
+
+
+
+
 }

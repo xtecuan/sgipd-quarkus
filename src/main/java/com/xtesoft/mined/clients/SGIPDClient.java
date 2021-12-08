@@ -25,6 +25,9 @@ public interface SGIPDClient {
             @PathParam("from") Integer from
     );
 
-
+    @GET
+    @Path("/criterio5/count")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Long getCountAplicaciones(@HeaderParam("Authorization") String authorization);
 
 }

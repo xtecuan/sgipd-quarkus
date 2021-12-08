@@ -34,10 +34,16 @@ public class ExeResource {
         return sgipdService.getAplicacionesDocente(codigoSolicitante);
     }
 
+//    @GET
+//    @Path("/jobtest")
+//    public String jobtest() {
+//        sgipdService.runCriterio5Full();
+//        return "done";
+//    }
+
     @GET
-    @Path("/jobtest")
-    public String jobtest() {
-        sgipdService.runCriterio5RestanteTest();
-        return "done";
+    @Path("/count")
+    public Long count() {
+        return sgipdService.getCountAplicaciones();
     }
 }
