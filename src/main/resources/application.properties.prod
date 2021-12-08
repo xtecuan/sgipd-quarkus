@@ -1,7 +1,8 @@
 quarkus.datasource.db-kind=mssql
 quarkus.datasource.username=JulianRivera
 quarkus.datasource.password=jup1t3r*2021
-quarkus.datasource.jdbc.url=jdbc:sqlserver://192.168.19.62:1433;databaseName=SOL_MINED_SV_PROD
+#quarkus.datasource.jdbc.url=jdbc:sqlserver://192.168.19.62:1433;databaseName=SGIDTPVD
+quarkus.datasource.jdbc.url=jdbc:sqlserver://localhost:1433;databaseName=SGIDTPVD
 
 documentos.tramite=/opt/sigobsol
 
@@ -11,10 +12,28 @@ sigobsol.baseurl=https://sigob02.mined.gob.sv/sigServicioST/api
 sigobsol.tramites.path=/tramite
 sigobsol.documentosadicionales.url=${sigobsol.baseurl}${sigobsol.tramites.path}/BajarDocumentoDatoAdicional
 
-org.eclipse.microprofile.rest.client.propagateHeaders=Authorization,Proxy-Authorization,Content-Disposition,Content-Length,Content-Type
+#org.eclipse.microprofile.rest.client.propagateHeaders=Authorization,Proxy-Authorization,Content-Disposition,Content-Length,Content-Type
 
 quarkus.http.port=7777
-quarkus.servlet.context-path=/loader
+quarkus.servlet.context-path=/sgipdq
 quarkus.servlet.default-charset=UTF-8
 quarkus.resteasy.multipart.input-part.default-charset=UTF-8
 quarkus.resteasy.multipart.input-part.default-content-type=text/html
+
+keycloak.base.url=http://sgipd.mined.gob.sv:8080
+keycloak.token.url=${keycloak.base.url}/auth/realms/MINED/protocol/openid-connect/token
+
+mined.user=xtecuan
+mined.password=X4tecuan
+mined.client_id=sgipd-web-prod
+mined.grant_type=password
+
+#quarkus.resteasy-json.json-default=false
+quarkus.rest-client."com.xtesoft.mined.clients.KeycloakRestClient".url=${keycloak.base.url}
+quarkus.rest-client."com.xtesoft.mined.clients.KeycloakRestClient".scope=javax.inject.Singleton
+
+sgipd.api.url=http://sgipd.mined.gob.sv:8983/sgipd-web/api
+
+quarkus.rest-client."com.xtesoft.mined.clients.SGIPDClient".url=${sgipd.api.url}
+quarkus.rest-client."com.xtesoft.mined.clients.SGIPDClient".scope=javax.inject.Singleton
+
