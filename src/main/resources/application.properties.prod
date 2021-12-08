@@ -1,8 +1,8 @@
 quarkus.application.name=sgipdq
-quarkus.datasource.db-kind=mssql
-quarkus.datasource.username=JulianRivera
-quarkus.datasource.password=jup1t3r*2021
-quarkus.datasource.jdbc.url=jdbc:sqlserver://192.168.19.62:1433;databaseName=SGIDTPVD
+#quarkus.datasource.db-kind=mssql
+#quarkus.datasource.username=JulianRivera
+#quarkus.datasource.password=jup1t3r*2021
+#quarkus.datasource.jdbc.url=jdbc:sqlserver://192.168.19.62:1433;databaseName=SGIDTPVD
 #quarkus.datasource.jdbc.url=jdbc:sqlserver://localhost:1433;databaseName=SGIDTPVD
 
 documentos.tramite=/opt/sigobsol
