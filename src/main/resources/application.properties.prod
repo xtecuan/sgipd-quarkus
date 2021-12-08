@@ -37,3 +37,11 @@ sgipd.api.url=http://172.17.0.1:8983/sgipd-web/api
 quarkus.rest-client."com.xtesoft.mined.clients.SGIPDClient".url=${sgipd.api.url}
 quarkus.rest-client."com.xtesoft.mined.clients.SGIPDClient".scope=javax.inject.Singleton
 
+
+
+quarkus.rest-client.extensions-api.hostname-verifier=io.quarkus.restclient.NoopHostnameVerifier
+quarkus.tls.trust-all=true
+
+
+
+
