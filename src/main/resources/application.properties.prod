@@ -20,7 +20,7 @@ quarkus.servlet.default-charset=UTF-8
 quarkus.resteasy.multipart.input-part.default-charset=UTF-8
 quarkus.resteasy.multipart.input-part.default-content-type=text/html
 
-keycloak.base.url=http://172.17.0.1:8080
+keycloak.base.url=http://sgipd.mined.gob.sv:8080
 keycloak.token.url=${keycloak.base.url}/auth/realms/MINED/protocol/openid-connect/token
 
 mined.user=xtecuan
@@ -32,7 +32,7 @@ mined.grant_type=password
 quarkus.rest-client."com.xtesoft.mined.clients.KeycloakRestClient".url=${keycloak.base.url}
 quarkus.rest-client."com.xtesoft.mined.clients.KeycloakRestClient".scope=javax.inject.Singleton
 
-sgipd.api.url=http://172.17.0.1:8983/sgipd-web/api
+sgipd.api.url=http://sgipd.mined.gob.sv:8983/sgipd-web/api
 
 quarkus.rest-client."com.xtesoft.mined.clients.SGIPDClient".url=${sgipd.api.url}
 quarkus.rest-client."com.xtesoft.mined.clients.SGIPDClient".scope=javax.inject.Singleton
